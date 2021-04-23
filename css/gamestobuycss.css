@@ -1,0 +1,70 @@
+#header{
+    background-color: #B33C3C; 
+    font-size: 5vw;
+    color: white;
+    width: 100%;
+    text-align: center;
+    font-family: sans-serif;
+}
+
+#nav{
+    box-sizing: border-box;
+    width: 25%;
+    background-color: #444040;
+    height: 655px;
+    float: left;
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+#bod2{
+    background-color: lightgray;
+    box-sizing: border-box;
+    width: 75%;
+    height: 655px;
+    font-size: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    overflow: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+#answers{
+    padding-top: 0px;
+    padding-left: 25px;
+    font-style: italic;
+}
+
+#footer{
+    background-color: #B33C3C; 
+    font-size: 20px;
+    color: white;
+    width: 100%;
+    height: 70px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+li a{
+    display: block;
+    padding: 14px 16px;
+    color: white;
+    text-decoration:none;
+    align-content: center;
+}
+
+li a:hover:not(.active){
+    background-color:black;
+}
+
+.gamename{
+    display:inline;
+    padding: 50px;
+}
+
+
