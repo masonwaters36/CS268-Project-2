@@ -1,0 +1,13 @@
+CREATE TABLE partslist
+(
+pl_id int NOT NULL AUTO_INCREMENT,
+cpu varchar(30) NOT NULL,
+motherboard varchar(30) NOT NULL,
+gpu varchar(30) NOT NULL,
+memory varchar(30) NOT NULL,
+storage varchar(30) NOT NULL,
+psu varchar(30) NOT NULL,
+box varchar(30),
+PRIMARY KEY (pl_id)
+);
+
