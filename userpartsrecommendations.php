@@ -37,7 +37,7 @@
 
     <div id="bod">
         <div id="plform">
-
+            <h2>Sumbit your own parts list!</h2>
             <form action="" method="post">
                 <b>Enter CPU: </b><input type="text" name="cpu"><br><br>
                 <b>Enter Motherboard: </b><input type="text" name="motherboard"><br><br>
@@ -74,16 +74,17 @@
                 $response = @mysqli_query($dbc, $sql);
 
                 if($response){
+                    echo '<h2>User submited lists!</h2>';
                     while($row = mysqli_fetch_array($response)){
                         echo '<h2>Parts list '.$row['pl_id']. ':</h2>
                         <ul style="list-style-type: none; font-size: 20px; vertical-align: middle;">
-                        <li>'.$row['cpu'].'</li>
-                        <li>'.$row['motherboard'].'</li>
-                        <li>'.$row['gpu'].'</li>
-                        <li>'.$row['memory'].'</li>
-                        <li>'.$row['storage'].'</li>
-                        <li>'.$row['psu'].'</li>
-                        <li>'.$row['box'].'</li>
+                        <li><b>CPU:</b> '.$row['cpu'].'</li>
+                        <li><b>Motherboard:</b> '.$row['motherboard'].'</li>
+                        <li><b>Graphics Card:</b> '.$row['gpu'].'</li>
+                        <li><b>Memory:</b> '.$row['memory'].'</li>
+                        <li><b>Storage:</b> '.$row['storage'].'</li>
+                        <li><b>Power Supply:</b> '.$row['psu'].'</li>
+                        <li><b>Case:</b> '.$row['box'].'</li>
                         </ul>
                         ';
                     }
