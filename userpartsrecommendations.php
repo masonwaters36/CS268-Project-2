@@ -36,31 +36,61 @@
     </div>
 
     <div id="bod">
-        <form action="" method="post">
-            <b>Enter CPU: </b><input type="text" name="cpu"><br><br>
-            <b>Enter Motherboard: </b><input type="text" name="motherboard"><br><br>
-            <b>Enter GPU: </b><input type="text" name="gpu"><br><br>
-            <b>Enter Memory: </b><input type="text" name="memory"><br><br>
-            <b>Enter Storage: </b><input type="text" name="str"><br><br>
-            <b>Enter Power Supply: </b><input type="text" name="psu"><br><br>
-            <b>Enter Case: </b><input type="text" name="box"><br><br>
-            <input type = "submit" value="submit" name="submit">
-        </form>
-        <?php
-        if(isset($_POST["submit"])){
-            if(!empty($_POST["cpu"]) && !empty($_POST["motherboard"]) && !empty($_POST["gpu"])){
+        <div id="plform">
+
+            <form action="" method="post">
+                <b>Enter CPU: </b><input type="text" name="cpu"><br><br>
+                <b>Enter Motherboard: </b><input type="text" name="motherboard"><br><br>
+                <b>Enter GPU: </b><input type="text" name="gpu"><br><br>
+                <b>Enter Memory: </b><input type="text" name="memory"><br><br>
+                <b>Enter Storage: </b><input type="text" name="str"><br><br>
+                <b>Enter Power Supply: </b><input type="text" name="psu"><br><br>
+                <b>Enter Case: </b><input type="text" name="box"><br><br>
+                <input type = "submit" value="submit" name="submit">
+            </form>
+            
+            <?php
+            if(isset($_POST["submit"])){
+                if(!empty($_POST["cpu"]) && !empty($_POST["motherboard"]) && !empty($_POST["gpu"])){
+                    require_once('php/connect.php');
+                    $sql = "INSERT INTO partslist (cpu, motherboard, gpu, memory, storage, psu, box) VALUES ('".$_POST["cpu"]."','".$_POST["motherboard"]."','".$_POST["gpu"]."','".$_POST["memory"]."','".$_POST["str"]."','".$_POST["psu"]."','".$_POST["box"]."')";
+                    if(mysqli_query($dbc, $sql)){
+                        echo "Successfully added build.";
+                    } else{
+                        echo "ERROR:" . mysqli_error($dbc);
+                    }
+                    
+                }
+            }
+            ?>
+
+        </div>
+
+        <div id="plist">
+            <?php
                 require_once('php/connect.php');
-                $sql = "INSERT INTO partslist (cpu, motherboard, gpu, memory, storage, psu, box) VALUES ('".$_POST["cpu"]."','".$_POST["motherboard"]."','".$_POST["gpu"]."','".$_POST["memory"]."','".$_POST["str"]."','".$_POST["psu"]."','".$_POST["box"]."')";
-                if(mysqli_query($dbc, $sql)){
-                    echo "Successfully added build.";
-                } else{
-                    echo "ERROR:" . mysqli_error($dbc);
+                $sql = "SELECT pl_id, cpu, motherboard, gpu, memory, storage, psu, box FROM partslist";
+
+                $response = @mysqli_query($dbc, $sql);
+
+                if($response){
+                    while($row = mysqli_fetch_array($response)){
+                        echo '<h2>Parts list '.$row['pl_id']. ':</h2>
+                        <ul style="list-style-type: none; font-size: 20px; vertical-align: middle;">
+                        <li>'.$row['cpu'].'</li>
+                        <li>'.$row['motherboard'].'</li>
+                        <li>'.$row['gpu'].'</li>
+                        <li>'.$row['memory'].'</li>
+                        <li>'.$row['storage'].'</li>
+                        <li>'.$row['psu'].'</li>
+                        <li>'.$row['box'].'</li>
+                        </ul>
+                        ';
+                    }
                 }
                 mysqli_close($dbc);
-            }
-        }
-        
-    ?>
+            ?>
+        </div>
     </div>
 
     <div id="footer">
