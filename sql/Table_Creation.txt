@@ -11,3 +11,11 @@ box varchar(30),
 PRIMARY KEY (pl_id)
 );
 
+CREATE TABLE users
+(
+user_id int NOT NULL AUTO_INCREMENT,
+username VARCHAR(40) NOT NULL UNIQUE,
+password VARCHAR(64) NOT NULL,
+created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+PRIMARY KEY (user_id) 
+);
