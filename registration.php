@@ -1,4 +1,7 @@
 <?php
+
+    session_start();
+
     require_once "php/connect.php";
     $user = "";
     $pass = "";
@@ -126,7 +129,7 @@
 
             <input type="submit" value="Register" id="register-form-submit">
         </form>
-        <form action="loginpage.html">
+        <form action="loginpage.php">
             Have an account? Log in here: <input type="submit" value="Log In">
         </form>
         <a style="text-align: center;" href="homepage.html">Back to Home Page</a>
