@@ -58,11 +58,7 @@
             $user_out = "Please fill all fields.";
         }
     }
-
-
     mysqli_close($dbc);
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

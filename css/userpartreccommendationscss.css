@@ -1,6 +1,6 @@
 #header{
     background-color: #B33C3C; 
-    font-size: 5vw;
+    font-size: 4vw;
     color: white;
     width: 100%;
     text-align: center;
@@ -15,6 +15,7 @@
     float: left;
     margin-top: 10px;
     font-size: 17px;
+    padding-bottom: 10px;
 }
 
 #bod{
@@ -56,7 +57,7 @@ li a:hover:not(.active){
     background-color:black;
 }
 
-#plist li{
+#glist li{
     display:grid;
     grid-template-columns: 1fr 2fr;
     border: 2px solid #292929;

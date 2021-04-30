@@ -11,7 +11,7 @@
 
     <div id="header">
         <img src="images/homepageimage.jpg" style="width: 10%; margin-right: 5%;" alt="Image of Gaming PC.">
-        How to Build a PC!
+        User Part Recommendations
         <img src="images/homepageimage2.jpg" style="width: 15%; margin-left: 4%;" alt="Image of recommended parts.">
         <form action="loginpage.php">
             <input type="submit" value="Log In" />
@@ -31,7 +31,7 @@
             <li><a href="gamestobuy.html">Games to Buy</a></li>
             <li><a href="commonmistakes.html">Common Mistakes</a></li>
             <li><a href="userpartsrecommendations.php">User Part Recommendations</a></li>
-            <li><a href="usergamereccommendations.html">User Game Recommendations</a></li>
+            <li><a href="usergamerecommendations.php">User Game Recommendations</a></li>
             <li><a href="partlinksfromuser.html">User Submitted Part Links</a></li>
         </ul>
     </div>
@@ -40,9 +40,9 @@
         <div id="plform">
             <h2>Sumbit your own parts list!</h2>
             <form action="" method="post">
-                <b>Enter CPU: </b><input type="text" name="cpu"><br><br>
-                <b>Enter Motherboard: </b><input type="text" name="motherboard"><br><br>
-                <b>Enter GPU: </b><input type="text" name="gpu"><br><br>
+                <b>Enter CPU: </b><input type="text" name="cpu" required><br><br>
+                <b>Enter Motherboard: </b><input type="text" name="motherboard" required><br><br>
+                <b>Enter GPU: </b><input type="text" name="gpu" required><br><br>
                 <b>Enter Memory: </b><input type="text" name="memory"><br><br>
                 <b>Enter Storage: </b><input type="text" name="str"><br><br>
                 <b>Enter Power Supply: </b><input type="text" name="psu"><br><br>
