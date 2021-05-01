@@ -27,3 +27,11 @@ game_name VARCHAR(40) NOT NULL UNIQUE,
 game_description VARCHAR(500) NOT NULL,
 PRIMARY KEY (game_id) 
 );
+
+CREATE TABLE links
+(
+game_id int NOT NULL AUTO_INCREMENT,
+part_name VARCHAR(100) NOT NULL UNIQUE,
+part_link VARCHAR(1000) NOT NULL,
+PRIMARY KEY (game_id) 
+);

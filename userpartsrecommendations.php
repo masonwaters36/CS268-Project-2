@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Home Page</title>
+    <title>User Part Recommendations</title>
     <link rel="icon" type="image/jpg" href="images/homepageimage.jpg">
     <link rel="stylesheet" href="css/userpartreccommendationscss.css">
 
@@ -32,7 +32,7 @@
             <li><a href="commonmistakes.html">Common Mistakes</a></li>
             <li><a href="userpartsrecommendations.php">User Part Recommendations</a></li>
             <li><a href="usergamerecommendations.php">User Game Recommendations</a></li>
-            <li><a href="partlinksfromuser.html">User Submitted Part Links</a></li>
+            <li><a href="partlinksfromuser.php">User Submitted Part Links</a></li>
         </ul>
     </div>
 
@@ -59,12 +59,10 @@
                         echo "Successfully added build.";
                     } else{
                         echo "ERROR:" . mysqli_error($dbc);
-                    }
-                    
+                    } 
                 }
             }
             ?>
-
         </div>
 
         <div id="plist">

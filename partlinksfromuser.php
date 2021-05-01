@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>User Game Recommendations</title>
+    <title>Part Links From User</title>
     <link rel="icon" type="image/jpg" href="images/homepageimage.jpg">
-    <link rel="stylesheet" href="css/usergamereccommendationscss.css">
+    <link rel="stylesheet" href="css/partlinkscss.css">
 
 </head>
 <body style="background-color: gray;">
 
     <div id="header">
         <img src="images/homepageimage.jpg" style="width: 10%; margin-right: 5%;" alt="Image of Gaming PC.">
-        Your Game Recommendations!
+        Parts you've seen in Stock!
         <img src="images/homepageimage2.jpg" style="width: 15%; margin-left: 4%;" alt="Image of recommended parts.">
         <form action="loginpage.php">
             <input type="submit" value="Log In" />
@@ -38,24 +38,23 @@
 
     <div id="bod">
         <div id="plform">
-            <h2>Sumbit your Game Recommendation!</h2>
+            <h2>Have you found a part in stock during this current shortage? Share here!</h2>
             <form action="" method="post">
-                <b>What Game would you like to add?: </b><input type="text" name="game_name"><br><br>
-                <b>Share a short description of the game (500 characters): </b><br><textarea maxlength="500" rows="9" cols="100" name="game_desc"></textarea><br><br>
+                <b>What part did you find?: </b><input type="text" name="part_name"><br><br>
+                <b>Enter link to part: </b><br><textarea rows="9" cols="100" name="part_link"></textarea><br><br>
                 <input type = "submit" value="submit" name="submit">
             </form>
             
             <?php
             if(isset($_POST["submit"])){
-                if(!empty($_POST["game_name"])){
+                if(!empty($_POST["part_name"])){
                     require_once('php/connect.php');
-                    $sql = "INSERT INTO games (game_name, game_description) VALUES ('".$_POST["game_name"]."','".$_POST["game_desc"]."')";
+                    $sql = "INSERT INTO links (part_name, part_link) VALUES ('".$_POST["part_name"]."','".$_POST["part_link"]."')";
                     if(mysqli_query($dbc, $sql)){
                         echo "Successfully added Game.";
                     } else{
                         echo( "ERROR:" . mysqli_error($dbc));
                     }
-                    //mysqli_query($dbc,"INSERT INTO games (game_name, game_desc) VALUES ('".$_POST["game_name"]."','".$_POST["game_desc"]."')") or die(mysqli_error($dbc));
                 }
             }
             ?>
@@ -64,17 +63,17 @@
         <div id="glist">
             <?php
                 require_once('php/connect.php');
-                $sql = "SELECT game_id, game_name, game_description FROM games";
+                $sql = "SELECT game_id, part_name, part_link FROM links";
 
                 $response = @mysqli_query($dbc, $sql);
 
                 if($response){
-                    echo '<h2>User shared games!</h2>';
+                    echo '<h2>User shared links!</h2>';
                     while($row = mysqli_fetch_array($response)){
-                        echo '<h2>Game '.$row['game_id']. ':</h2>
+                        echo '<h2>Part '.$row['game_id']. ':</h2>
                         <ul style="list-style-type: none; font-size: 20px; vertical-align: middle;">
-                        <li><b>Game Name:</b> '.$row['game_name'].'</li>
-                        <li><b>Game Description:</b> '.$row['game_description'].'</li>
+                        <li><b>Part Name:</b> '.$row['part_name'].'</li>
+                        <li><b>Part Link:</b> <a href="'.$row['part_link'].'">Link to the part!</a></li>
                         </ul>
                         ';
                     }
