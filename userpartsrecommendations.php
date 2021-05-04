@@ -1,3 +1,7 @@
+<php?
+    session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,9 +17,19 @@
         <img src="images/homepageimage.jpg" style="width: 10%; margin-right: 5%;" alt="Image of Gaming PC.">
         User Part Recommendations
         <img src="images/homepageimage2.jpg" style="width: 15%; margin-left: 4%;" alt="Image of recommended parts.">
-        <form action="loginpage.php">
-            <input type="submit" value="Log In" />
-        </form>
+        <?php
+            if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]===true){
+                echo '<form action="logout.php">
+                <div style="font-size:20px;">Hello '.$_SESSION["user"].'! </div><input type="submit" value="log out"> 
+                </form>';
+            }
+            else{
+                echo '<form action="loginpage.php">
+                <input type="submit" value="Log In" />
+                </form>';
+            }
+        ?>
+        
     </div>
 
     <div id = "nav">
@@ -54,7 +68,7 @@
             if(isset($_POST["submit"])){
                 if(!empty($_POST["cpu"]) && !empty($_POST["motherboard"]) && !empty($_POST["gpu"])){
                     require_once('php/connect.php');
-                    $sql = "INSERT INTO partslist (cpu, motherboard, gpu, memory, storage, psu, box) VALUES ('".$_POST["cpu"]."','".$_POST["motherboard"]."','".$_POST["gpu"]."','".$_POST["memory"]."','".$_POST["str"]."','".$_POST["psu"]."','".$_POST["box"]."')";
+                    $sql = "INSERT INTO partslist (user, cpu, motherboard, gpu, memory, storage, psu, box) VALUES ('','".$_POST["cpu"]."','".$_POST["motherboard"]."','".$_POST["gpu"]."','".$_POST["memory"]."','".$_POST["str"]."','".$_POST["psu"]."','".$_POST["box"]."')";
                     if(mysqli_query($dbc, $sql)){
                         echo "Successfully added build.";
                     } else{
