@@ -84,7 +84,8 @@
     </div>
 
     <div id="footer">
-        Contact us: Mason Waters (watersmw7935@uwec.edu), Shane Falkum (falkumsm2838@uwec.edu)
+        <div id="contact">Contact us:</div>
+        <div class="name">Mason Waters<div class="email">(watersmw7935@uwec.edu)</div></div><div class="name">Shane Falkum<div class="email">(falkumsm2838@uwec.edu)</div></div>
     </div>
 
 </body>
