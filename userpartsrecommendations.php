@@ -51,23 +51,31 @@
 
     <div id="bod">
         <div id="plform">
-            <h2>Sumbit your own parts list!</h2>
-            <form action="" method="post">
-                <b>Enter CPU: </b><input type="text" name="cpu" required><br><br>
-                <b>Enter Motherboard: </b><input type="text" name="motherboard" required><br><br>
-                <b>Enter GPU: </b><input type="text" name="gpu" required><br><br>
-                <b>Enter Memory: </b><input type="text" name="memory"><br><br>
-                <b>Enter Storage: </b><input type="text" name="str"><br><br>
-                <b>Enter Power Supply: </b><input type="text" name="psu"><br><br>
-                <b>Enter Case: </b><input type="text" name="box"><br><br>
-                <input type = "submit" value="submit" name="submit">
-            </form>
+            <?php
+                if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]===true){
+                   echo '<h2>Sumbit your own parts list!</h2>
+                   <form action="" method="post">
+                       <b>Enter CPU: </b><input type="text" name="cpu" required><br><br>
+                       <b>Enter Motherboard: </b><input type="text" name="motherboard" required><br><br>
+                       <b>Enter GPU: </b><input type="text" name="gpu" required><br><br>
+                       <b>Enter Memory: </b><input type="text" name="memory"><br><br>
+                       <b>Enter Storage: </b><input type="text" name="str"><br><br>
+                       <b>Enter Power Supply: </b><input type="text" name="psu"><br><br>
+                       <b>Enter Case: </b><input type="text" name="box"><br><br>
+                       <input type = "submit" value="submit" name="submit">
+                   </form>' ;
+                }
+                else{
+                    echo '<h2>Login to submit your own parts list!</h2>';
+                }
+            ?>
+            
             
             <?php
             if(isset($_POST["submit"])){
                 if(!empty($_POST["cpu"]) && !empty($_POST["motherboard"]) && !empty($_POST["gpu"])){
                     require_once('php/connect.php');
-                    $sql = "INSERT INTO partslist (user, cpu, motherboard, gpu, memory, storage, psu, box) VALUES ('','".$_POST["cpu"]."','".$_POST["motherboard"]."','".$_POST["gpu"]."','".$_POST["memory"]."','".$_POST["str"]."','".$_POST["psu"]."','".$_POST["box"]."')";
+                    $sql = "INSERT INTO partslist (user, cpu, motherboard, gpu, memory, storage, psu, box) VALUES ('".$_SESSION["user"]."','".$_POST["cpu"]."','".$_POST["motherboard"]."','".$_POST["gpu"]."','".$_POST["memory"]."','".$_POST["str"]."','".$_POST["psu"]."','".$_POST["box"]."')";
                     if(mysqli_query($dbc, $sql)){
                         echo "Successfully added build.";
                     } else{
@@ -81,14 +89,14 @@
         <div id="plist">
             <?php
                 require_once('php/connect.php');
-                $sql = "SELECT pl_id, cpu, motherboard, gpu, memory, storage, psu, box FROM partslist";
+                $sql = "SELECT user, cpu, motherboard, gpu, memory, storage, psu, box FROM partslist";
 
                 $response = @mysqli_query($dbc, $sql);
 
                 if($response){
                     echo '<h2>User submited lists!</h2>';
                     while($row = mysqli_fetch_array($response)){
-                        echo '<h2>Parts list '.$row['pl_id']. ':</h2>
+                        echo '<h2>Part list by '.$row['user'].':</h2>
                         <ul style="list-style-type: none; font-size: 20px; vertical-align: middle;">
                         <li><b>CPU:</b> '.$row['cpu'].'</li>
                         <li><b>Motherboard:</b> '.$row['motherboard'].'</li>
