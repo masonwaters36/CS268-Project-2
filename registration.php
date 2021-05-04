@@ -103,6 +103,18 @@
         <img src="images/homepageimage.jpg" style="width: 10%; margin-right: 5%;" alt="Image of Gaming PC.">
         How to Build a PC!
         <img src="images/homepageimage2.jpg" style="width: 15%; margin-left: 4%;" alt="Image of recommended parts.">
+        <?php
+            if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]===true){
+                echo '<form action="logout.php">
+                <div style="font-size:20px;">Hello '.$_SESSION["user"].'! </div><input type="submit" value="log out"> 
+                </form>';
+            }
+            else{
+                echo '<form action="loginpage.php">
+                <input type="submit" value="Log In" />
+                </form>';
+            }
+        ?>
     </div>
 
     <div id="bod">
