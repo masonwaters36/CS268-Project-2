@@ -1,6 +1,7 @@
 CREATE TABLE partslist
 (
 pl_id int NOT NULL AUTO_INCREMENT,
+user VARCHAR(40) NOT NULL,
 cpu varchar(30) NOT NULL,
 motherboard varchar(30) NOT NULL,
 gpu varchar(30) NOT NULL,
